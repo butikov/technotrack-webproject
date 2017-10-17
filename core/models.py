@@ -1,12 +1,19 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+from event.models import Event
 
 
-class Event(models.Model):
+class City(models.Model):
     title = models.CharField(max_length=255)
-    creator = models.IntegerField()
+
+    def __str__(self):
+        return self.title
 
 
-class User(models.Model):
-    name = models.CharField(max_length=63)
+class Language(models.Model):
+    title = models.CharField(max_length=255)
+
+
+class User(AbstractUser):
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True)

@@ -1,22 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-# Create your views here.
+from event.models import Event
+from .models import User
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'events': Event.objects})
 
 
 def user_page(request, user_id=None):
-    return render(request, 'user_page.html', {'id': user_id})
-
-
-def event_page(request, event_id=None):
-    return render(request, 'event.html', {'id': event_id})
-
-
-def new_event(request):
-    return render(request, 'new_event.html')
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'user_page.html', {'user': user})
 
 
 def register(request):

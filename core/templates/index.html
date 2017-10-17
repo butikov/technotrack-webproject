@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-</head>
-<body>
-Welcome to this site!
-</body>
-</html>
+{% extends 'base.html' %} }
+
+{% block content %}
+    {% for event in events.all %}
+        <div>
+            <a href="{% url "event_page" event_id=event.id %}">{{ event.title }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}

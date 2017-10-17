@@ -17,16 +17,19 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from core import views
+import core.views
+import event.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^index/$', views.index),
-    url(r'^users/(?P<user_id>\d+)/$', views.user_page),
-    url(r'^events/(?P<event_id>\d+)/$', views.event_page),
-    url(r'^register/$', views.register),
-    url(r'^new_event/$', views.new_event),
+    url(r'^$', core.views.index),
+    url(r'^index/$', core.views.index),
+    url(r'^users/(?P<user_id>\d+)/$', core.views.user_page, name='user_page'),
+    url(r'^events/(?P<event_id>\d+)/$', event.views.event_page, name='event_page'),
+    url(r'^register/$', core.views.register),
+    url(r'^new_event/$', event.views.new_event),
+    url(r'^categories/$', event.views.cat_list, name='cats_list'),
+    url(r'^categories/(?P<cat_name>\w+)/$', event.views.category, name='cat_page')
 ]
 
 if settings.DEBUG:
