@@ -6,7 +6,7 @@
 {% block content %}
     {% for event in category.events.all %}
         <div>
-            <a href="{% url "event_page" event_id=event.id %}">{{ event.title }}</a>
+            <a href="{% url "events:event_page" event_id=event.id %}">{{ event.title }}</a>
         </div>
     {% endfor %}
 {% endblock %}

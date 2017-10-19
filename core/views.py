@@ -5,7 +5,7 @@ from .models import User
 
 
 def index(request):
-    return render(request, 'index.html', {'events': Event.objects})
+    return render(request, 'index.html', {'events': Event.objects.all})
 
 
 def user_page(request, user_id=None):

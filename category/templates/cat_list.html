@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    {% for cat in categories.all %}
+    {% for cat in categories %}
         <div>
-            <a href="{% url "cat_page" cat_name=cat.title %}"> {{ cat.title }}</a>
+            <a href="{% url "cats:cat_page" cat_name=cat.title %}"> {{ cat.title }}</a>
         </div>
     {% endfor %}
 {% endblock %}

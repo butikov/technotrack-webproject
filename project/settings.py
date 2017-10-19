@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'core.apps.CoreConfig',
     'event.apps.EventConfig',
+    'category.apps.CategoryConfig',
 ]
 
 AUTH_USER_MODEL = 'core.User'
