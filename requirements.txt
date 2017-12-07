@@ -10,7 +10,7 @@ django-jquery==3.1.0
 django-map-widgets==0.1.9
 django-multiselectfield==0.1.8
 flake8==3.5.0
-pygdal==1.11.5
+pygdal==1.11.5.3
 gunicorn==19.7.1
 idna==2.6
 ipython==6.2.1
