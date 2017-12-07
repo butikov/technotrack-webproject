@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 
 GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
@@ -143,15 +145,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/uploads/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 GOOGLE_MAP_API_KEY = "AIzaSyBKoBqoNECkRJCdgNvm3y0LclLCyoGfUdY"
 
 MAP_WIDGETS = {
@@ -163,3 +164,6 @@ MAP_WIDGETS = {
     ),
     "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
 }
+
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
