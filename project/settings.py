@@ -101,8 +101,8 @@ DATABASES = {
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
-GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+GDAL_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgdal.so"
+GEOS_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgeos_c.so"
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
