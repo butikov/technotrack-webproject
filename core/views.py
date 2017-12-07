@@ -1,17 +1,47 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import reverse
+from django.views.generic import CreateView, DetailView, TemplateView
 
 from event.models import Event
-from .models import User
 
 
-def index(request):
-    return render(request, 'index.html', {'events': Event.objects.all})
+class MyUserCreation(UserCreationForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name',
+                  'avatar', 'country', 'languages',)
+
+    def save(self, commit=True):
+        user = super(MyUserCreation, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+        user.first_name = self.cleaned_data["first_name"]
+        user.last_name = self.cleaned_data["last_name"]
+        user.country = self.cleaned_data["country"]
+        user.languages = self.cleaned_data["country"]
+        if commit:
+            user.save()
+        return user
 
 
-def user_page(request, user_id=None):
-    user = get_object_or_404(User, id=user_id)
-    return render(request, 'user_page.html', {'user': user})
+class RegistrationView(CreateView):
+    form_class = MyUserCreation
+    template_name = 'register.html'
+
+    def get_success_url(self):
+        return reverse('index')
 
 
-def register(request):
-    return render(request, 'register.html')
+class UserView(DetailView):
+    model = get_user_model()
+    context_object_name = 'user'
+    template_name = 'user_page.html'
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['events'] = Event.objects.all()
+        return context

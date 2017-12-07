@@ -1,9 +1,9 @@
 {% extends 'base.html' %} }
 
 {% block content %}
-    {% for event in events %}
+    {% for event in  events %}
         <div>
-            <a href="{% url "events:event_page" event_id=event.id %}">{{ event.title }}</a>
+            <a href="{% url "events:event_page" pk=event.id %}">{{ event.title }}</a><br>
         </div>
     {% endfor %}
 {% endblock %}

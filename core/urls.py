@@ -1,8 +1,7 @@
 from django.conf.urls import url
 
-from .views import user_page, register
+from .views import UserView
 
 urlpatterns = [
-    url(r'^(?P<user_id>\d+)/$', user_page, name='user_page'),
-    url(r'^new/$', register),
+    url(r'^(?P<pk>\d+)/$', UserView.as_view(), name='user_page'),
 ]

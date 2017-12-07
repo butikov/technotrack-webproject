@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{ category.title }}
+    <h1>{{ category.title }}</h1>
 {% endblock %}
 
 {% block content %}
     {% for event in category.events.all %}
         <div>
-            <a href="{% url "events:event_page" event_id=event.id %}">{{ event.title }}</a>
+            <a href="{% url "events:event_page" pk=event.id %}">{{ event.title }}</a>
         </div>
     {% endfor %}
 {% endblock %}

@@ -16,16 +16,19 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView
 
-from core.views import index
+from core.views import RegistrationView, IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^categories/', include('category.urls', namespace='cats')),
     url(r'^events/', include('event.urls', namespace='events')),
     url(r'^users/', include('core.urls', namespace='users')),
-    url(r'^$', index),
-    url(r'^index/$', index),
+    url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^login/$', LoginView.as_view(template_name='login.html', success_url='index'), name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^register/$', RegistrationView.as_view(), name='register'),
 ]
 
 if settings.DEBUG:

@@ -4,7 +4,7 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 countries = tuple((c.alpha_2, c.name) for c in pycountry.countries)
-lang_list = tuple((l.alpha_3, l.name) for l in pycountry.languages)
+lang_list = tuple((l.alpha_3, l.name) for l in pycountry.languages)[:500]
 
 
 class User(AbstractUser):

@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'mapwidgets',
     'debug_toolbar',
     'core.apps.CoreConfig',
     'event.apps.EventConfig',
     'category.apps.CategoryConfig',
+    'bootstrap4'
 ]
 
 AUTH_USER_MODEL = 'core.User'
@@ -55,6 +58,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+LOGIN_REDIRECT_URL = 'index'
 
 ROOT_URLCONF = 'project.urls'
 
@@ -82,11 +87,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Project',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'track',
         'USER': 'fedor',
-        'PASSWORD': 'Seaf!sh1',
-        'HOST': 'localhost',
+        #      'PASSWORD': 'rodef',
+        #      'HOST': 'localhost',
     }
 }
 
@@ -131,3 +136,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/uploads/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+GOOGLE_MAP_API_KEY = "AIzaSyBKoBqoNECkRJCdgNvm3y0LclLCyoGfUdY"
+
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 15),
+        ("mapCenterLocation", [51.5073509, -0.12775829999998223]),
+        ("markerFitZoom", 11),
+        ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'ru'}})
+    ),
+    "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
+}
