@@ -98,7 +98,7 @@ DATABASES = {
         'NAME': 'track',
         'USER': 'fedor',
         #      'PASSWORD': 'rodef',
-        #      'HOST': 'localhost',
+        'HOST': 'localhost',
     }
 }
 
@@ -130,11 +130,8 @@ INTERNAL_IPS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -168,5 +165,5 @@ application = DjangoWhiteNoise(application)
 
 import dj_database_url
 
-DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
