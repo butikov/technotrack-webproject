@@ -19,6 +19,6 @@ class Event(models.Model):
     max_participants = models.IntegerField(default=-1)
     create_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
-    coordinates = models.PointField()
+#    coordinates = models.PointField()
     categories = models.ManyToManyField(Category, related_name='events')
     is_deleted = models.BooleanField(default=False)
