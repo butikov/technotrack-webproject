@@ -98,7 +98,7 @@ DATABASES = {
         'NAME': 'track',
         'USER': 'fedor',
         #      'PASSWORD': 'rodef',
-        'HOST': 'localhost',
+        'HOST': '',
     }
 }
 
