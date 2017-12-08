@@ -27,9 +27,7 @@ SECRET_KEY = '4i6pe8)mlr28ydh9o&8i2qu((s4i&m0ui)nc0(9+1+bq)0wu=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'intense-mountain-93885.herokuapp.com',
-]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
