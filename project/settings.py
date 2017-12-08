@@ -27,7 +27,7 @@ SECRET_KEY = '4i6pe8)mlr28ydh9o&8i2qu((s4i&m0ui)nc0(9+1+bq)0wu=d'
 #SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -163,9 +163,9 @@ MAP_WIDGETS = {
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
 
-#DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 #DATABASES['default']['ATOMIC_REQUESTS'] = True
-#DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
