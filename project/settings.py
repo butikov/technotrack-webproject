@@ -89,8 +89,8 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'track',
-        'USER': 'fedor',
+#        'NAME': 'track',
+#        'USER': 'fedor',
         #      'PASSWORD': 'rodef',
         #'HOST': '',
     }
