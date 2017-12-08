@@ -14,6 +14,9 @@ import os
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
 
+GDAL_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgdal.so"
+GEOS_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgeos_c.so"
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -165,6 +168,3 @@ import dj_database_url
 
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-
-GDAL_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgdal.so"
-GEOS_LIBRARY_PATH = "/app/.heroku/vendor/lib/libgeos_c.so"
