@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'NAME': 'track',
+        'USER': 'fedor',
+        #'PASSWORD': 'rodef',
+#        'HOST': '',
+#        'PORT': '',
     }
 }
 db_from_env = dj_database_url.config()
@@ -163,5 +163,6 @@ application = DjangoWhiteNoise(application)
 
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+#print(dj_database_url.config())
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
