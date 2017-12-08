@@ -31,7 +31,6 @@ ALLOWED_HOSTS = [
     'intense-mountain-93885.herokuapp.com',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
