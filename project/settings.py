@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'track',
         'USER': 'fedor',
         #      'PASSWORD': 'rodef',
-        'HOST': '',
+        #'HOST': '',
     }
 }
 
