@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import dj_database_url
 import os
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,16 +91,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'dau8fujsn55i33',
-        'USER': 'caucvrhybjzrms',
-        'PASSWORD': '003f20d01d172b46aab1505708c88b318362813d494365ec22550728225798f7',
-        'HOST': 'ec2-54-243-48-183.compute-1.amazonaws.com',
+        'NAME': 'track',
+        'USER': 'postgres',
+        'PASSWORD': 'passwd',
+        'HOST': 'localhost',
         'PORT': 5432,
-        'ATOMIC_REQUESTS': True,
     }
 }
-#db_from_env = dj_database_url.config()
-#DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -164,9 +163,7 @@ application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
 
 DATABASES['default'] = dj_database_url.config()
-#DATABASES['default']['ATOMIC_REQUESTS'] = True
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
-print(DATABASES)

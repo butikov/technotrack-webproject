@@ -7,7 +7,7 @@ from .models import Event
 class NewEventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ('title', 'description', 'event_time', 'max_participants', 'coordinates', 'categories')
+        fields = ('title', 'description', 'event_time', 'max_participants', 'categories', 'coordinates')
         widgets = {'coordinates': GooglePointFieldWidget}
 
 
