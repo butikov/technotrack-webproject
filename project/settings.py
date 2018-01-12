@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'event.apps.EventConfig',
     'category.apps.CategoryConfig',
     'bootstrap4',
-    'cities'
 ]
 
 AUTH_USER_MODEL = 'core.User'
