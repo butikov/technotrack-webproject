@@ -27,12 +27,6 @@
 {% endblock %}
 
 {% block content %}
-    <article>
-        <h1>{{ event.description }}</h1>
-        <p>Event time: {{ event.event_time }}</p>
-        <p>Creator: {{ event.author }}</p>
-        <p>Participants:{{ event.participants }}</p>
-    </article>
-    {{ event.coordinates }}
+    {{ form.as_p }}
 
 {% endblock %}
