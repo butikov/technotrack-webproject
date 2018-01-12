@@ -141,7 +141,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-GOOGLE_MAP_API_KEY = "AIzaSyBhM8LCiqERMKTRY8RYp5Nf_GbVxKLfoP8"
+GOOGLE_MAP_API_KEY = "AIzaSyAv6qWurkC00J2uwkYVJDFXU7jNZ6N5c6Y"
 
 MAP_WIDGETS = {
     "GooglePointFieldWidget": (
