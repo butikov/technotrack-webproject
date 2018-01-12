@@ -10,7 +10,7 @@ class NewEventForm(forms.ModelForm):
         model = Event
         fields = ('title', 'description', 'event_time', 'max_participants', 'categories', 'coordinates')
         widgets = {'coordinates': GooglePointFieldWidget,
-                   'categories': autocomplete.ModelSelect2Multiple(url='cats:cat-autocomplete')
+                   'categories': autocomplete.ModelSelect2Multiple(url='cats:cat-autocomplete'),
                    }
 
 
@@ -18,5 +18,4 @@ class EventDetailForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ('title', 'description', 'event_time', 'participants', 'categories', 'coordinates',)
-        widgets = {'coordinates': GoogleStaticMapWidget,
-                   'categories': autocomplete.ModelSelect2Multiple(url='cats:cat-autocomplete')}
+        widgets = {'coordinates': GoogleStaticMapWidget}

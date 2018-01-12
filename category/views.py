@@ -8,7 +8,7 @@ from .models import Category
 class CategoryAutoComplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         if not self.request.user.is_authenticated():
-            return Category.objects.all()
+            return Category.objects.none()
         qs = Category.objects.all()
         if self.q:
             qs = qs.filter(title__istartswith=self.q)
