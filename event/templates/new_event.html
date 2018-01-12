@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}
+{% load staticfiles %}
+{% block additional %}
     {{ form.media }}
 
     <script type="text/javascript">
@@ -20,6 +20,11 @@
             console.log(mapWrapID); // map widget wrapper element ID
         })
     </script>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'autocomplete_light/vendor/select2/dist/css/select2.css' %}"/>
+{% endblock %}
+{% block title %}
+    Новое событие
 {% endblock %}
 {% block content %}
     <form method="post" action="">

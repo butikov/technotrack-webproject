@@ -8,7 +8,6 @@ from .models import Event
 class NewEventView(CreateView):
     template_name = 'new_event.html'
     form_class = NewEventForm
-    model = Event
 
     def form_valid(self, form):
         form.instance.author = self.request.user

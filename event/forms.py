@@ -1,3 +1,4 @@
+from dal import autocomplete
 from django import forms
 from mapwidgets.widgets import GooglePointFieldWidget, GoogleStaticMapWidget
 
@@ -8,11 +9,14 @@ class NewEventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ('title', 'description', 'event_time', 'max_participants', 'categories', 'coordinates')
-        widgets = {'coordinates': GooglePointFieldWidget}
+        widgets = {'coordinates': GooglePointFieldWidget,
+                   'categories': autocomplete.ModelSelect2Multiple(url='cats:cat-autocomplete')
+                   }
 
 
 class EventDetailForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ('title', 'description', 'event_time', 'participants', 'categories', 'coordinates',)
-        widgets = {'coordinates': GoogleStaticMapWidget}
+        widgets = {'coordinates': GoogleStaticMapWidget,
+                   'categories': autocomplete.ModelSelect2Multiple(url='cats:cat-autocomplete')}

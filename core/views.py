@@ -1,9 +1,21 @@
+from cities.models import City
+from dal import autocomplete
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import reverse
 from django.views.generic import CreateView, DetailView, TemplateView
 
 from event.models import Event
+
+
+class CountryAutoComplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = City
+
+        if self.q:
+            qs = qs.filter(name__isstartswidth=self.q)
+
+        return qs
 
 
 class MyUserCreation(UserCreationForm):
@@ -18,7 +30,7 @@ class MyUserCreation(UserCreationForm):
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
         user.country = self.cleaned_data["country"]
-        user.languages = self.cleaned_data["country"]
+        user.languages = self.cleaned_data["languages"]
         if commit:
             user.save()
         return user

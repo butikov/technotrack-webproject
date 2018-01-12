@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +48,8 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'event.apps.EventConfig',
     'category.apps.CategoryConfig',
-    'bootstrap4'
+    'bootstrap4',
+    'cities'
 ]
 
 AUTH_USER_MODEL = 'core.User'
@@ -89,16 +92,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'denro17kd0mqu8',
-        'USER': 'hgwfslhucwckzw',
-        'PASSWORD': '50e9f4367be1f965d0ebaf452954a6419cb08ac80d97853c471758c628e267f7',
-        'HOST': 'ec2-54-221-244-196.compute-1.amazonaws.com',
-        'PORT': 5432,
-    }
-}
+DATABASES = {'default': dj_database_url.config()}
+
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -163,7 +159,3 @@ application = DjangoWhiteNoise(application)
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
 GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
-
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-print(DATABASES['default']['ENGINE'])
