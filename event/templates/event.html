@@ -3,30 +3,18 @@
 {% block additional %}
     {{ form.media }}
 
-    <script type="text/javascript">
-        $(document).on("google_point_map_widget:marker_create", function (e, lat, lng, locationInputElem, mapWrapID) {
-            console.log(locationInputElem); // django widget textarea widget (hidden)
-            console.log(lat, lng); // created marker coordinates
-            console.log(mapWrapID); // map widget wrapper element ID
-        });
-        $(document).on("google_point_map_widget:marker_change", function (e, lat, lng, locationInputElem, mapWrapID) {
-            console.log(locationInputElem); // django widget textarea widget (hidden)
-            console.log(lat, lng);  // changed marker coordinates
-            console.log(mapWrapID); // map widget wrapper element ID
-        });
-        $(document).on("google_point_map_widget:marker_delete", function (e, lat, lng, locationInputElem, mapWrapID) {
-            console.log(locationInputElem); // django widget textarea widget (hidden)
-            console.log(lat, lng);  // deleted marker coordinates
-            console.log(mapWrapID); // map widget wrapper element ID
-        })
-    </script>
-
 {% endblock %}
 {% block title %}
     {{ event.title }}
 {% endblock %}
 
 {% block content %}
+    <article>
+        <h1>{{ event.description }}</h1>
+        <p>Event time: {{ event.event_time }}</p>
+        <p>Creator: {{ event.author }}</p>
+        <p>Participants:{{ event.participants }}</p>
+    </article>
     {{ form.as_p }}
 
 {% endblock %}

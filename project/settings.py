@@ -150,6 +150,26 @@ MAP_WIDGETS = {
         ("markerFitZoom", 11),
         ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'ru'}})
     ),
+    "GoogleStaticMapWidget": (
+        ("zoom", 15),
+        ("size", "480x480"),
+        ("scale", ""),
+        ("format", ""),
+        ("maptype", ""),
+        ("path", ""),
+        ("visible", ""),
+        ("style", ""),
+        ("language", "ru"),
+        ("region", "")
+    ),
+
+    "GoogleStaticMapMarkerSettings": (
+        ("size", "normal"),
+        ("color", ""),
+        ("icon", ""),
+    ),
+    "LANGUAGE": "ru",
+    "GOOGLE_MAP_API_SIGNATURE": "",
     "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
 }
 
