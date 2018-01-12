@@ -18,4 +18,4 @@ class EventDetailForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ('title', 'description', 'event_time', 'participants', 'categories', 'coordinates',)
-        widgets = {'coordinates': GoogleStaticMapWidget}
+        widgets = {'coordinates': GoogleStaticMapWidget(zoom=12, size='240x240')}

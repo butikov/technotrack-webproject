@@ -1,7 +1,7 @@
 from django.shortcuts import reverse
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView
 
-from .forms import NewEventForm
+from .forms import NewEventForm, EventDetailForm
 from .models import Event
 
 
@@ -29,7 +29,8 @@ class EventUpdate(UpdateView):
         return reverse('events:event_page', kwargs={'pk': self.object.pk})
 
 
-class EventView(DetailView):
+class EventView(UpdateView):
+    form_class = EventDetailForm
     template_name = 'event.html'
     context_object_name = 'event'
     model = Event
